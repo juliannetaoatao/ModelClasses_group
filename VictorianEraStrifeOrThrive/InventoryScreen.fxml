@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="320.0" prefWidth="570.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VictorianEraStrifeOrThrive.InventoryScreenController">
+    <children>
+      <ImageView fitHeight="330.0" fitWidth="570.0">
+         <image>
+            <Image url="@images/mapBackground.png" />
+         </image>
+      </ImageView>
+      <Pane disable="true" layoutX="17.0" layoutY="84.0" prefHeight="203.0" prefWidth="113.0" style="-fx-background-color: #99623a; -fx-border-color: yellow;">
+         <children>
+            <Text fill="WHITE" layoutX="33.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="STATS">
+               <font>
+                  <Font name="Tahoma Bold" size="14.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="6.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:  Player       Occupation: Dustyard Worker" wrappingWidth="113.33333333333331">
+               <font>
+                  <Font name="Tahoma Bold" size="8.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="103.0" fitWidth="51.0" layoutX="25.0" layoutY="24.0">
+               <image>
+                  <Image url="@images/mapInventory.png" />
+               </image>
+            </ImageView>
+         </children></Pane>
+      <GridPane layoutX="16.0" layoutY="14.0" prefHeight="55.0" prefWidth="220.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <ProgressBar prefHeight="13.0" prefWidth="100.0" progress="0.47" />
+            <ProgressBar prefHeight="13.0" prefWidth="100.0" progress="0.66" GridPane.columnIndex="1" />
+            <ProgressBar prefHeight="13.0" prefWidth="100.0" progress="0.79" GridPane.rowIndex="1" />
+            <ProgressBar prefHeight="13.0" prefWidth="100.0" progress="0.52" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Circle fill="WHITE" radius="12.0" stroke="BLACK" strokeType="INSIDE">
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin></Circle>
+            <Circle fill="WHITE" radius="12.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" />
+            <Circle fill="WHITE" radius="12.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="1" />
+            <Circle fill="WHITE" radius="12.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ImageView fitHeight="16.0" fitWidth="16.0">
+               <image>
+                  <Image url="@images/health.png" />
+               </image>
+               <GridPane.margin>
+                  <Insets left="4.0" />
+               </GridPane.margin>
+            </ImageView>
+            <ImageView fitHeight="18.0" fitWidth="9.0" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@images/energy.png" />
+               </image>
+               <GridPane.margin>
+                  <Insets left="8.0" />
+               </GridPane.margin>
+            </ImageView>
+            <ImageView fitHeight="16.0" fitWidth="16.0" GridPane.columnIndex="1">
+               <image>
+                  <Image url="@images/hydration.png" />
+               </image>
+               <GridPane.margin>
+                  <Insets left="5.0" />
+               </GridPane.margin>
+            </ImageView>
+            <ImageView fitHeight="18.0" fitWidth="16.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@images/hunger.png" />
+               </image>
+               <GridPane.margin>
+                  <Insets bottom="2.0" left="4.0" />
+               </GridPane.margin>
+            </ImageView>
+         </children>
+      </GridPane>
+      <Pane layoutX="141.0" layoutY="83.0" prefHeight="203.0" prefWidth="389.0" style="-fx-background-color: #932600;">
+         <children>
+            <Rectangle fx:id="screenChanger" arcHeight="5.0" arcWidth="5.0" fill="#ac5401" height="25.0" layoutX="3.0" layoutY="3.0" onMouseClicked="#backToScreenMenu" opacity="0.45" stroke="BLACK" strokeType="INSIDE" width="375.0" />
+            <Text fill="WHITE" layoutX="14.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INVENTORY ">
+               <font>
+                  <Font name="Tahoma Bold" size="14.0" />
+               </font>
+            </Text>
+            <ScrollPane layoutY="28.0" prefHeight="176.0" prefWidth="389.0" style="-fx-background-color: #99623a;" vmax="20.0" vvalue="20.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="239.0" prefWidth="379.0" style="-fx-background-color: #ac5401;">
+                     <children>
+                        <VBox layoutX="-1.0" layoutY="9.0" prefHeight="291.0" prefWidth="375.0" spacing="5.0">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="44.0" prefWidth="375.0" spacing="20.0" style="-fx-background-color: #932600;">
+                                 <children>
+                                    <Text fill="#fffefe" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="#fffefe" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="#fffefe" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <Button id="1" mnemonicParsing="false" text="eat" />
+                                    <Button mnemonicParsing="false" text="sell" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="49.0" prefWidth="375.0" spacing="20.0" style="-fx-background-color: #932600;">
+                                 <children>
+                                    <Text fill="#fffefe" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="#fffefe" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="#fffefe" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <Button id="2" mnemonicParsing="false" text="eat" />
+                                    <Button mnemonicParsing="false" text="sell" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="49.0" prefWidth="375.0" spacing="20.0" style="-fx-background-color: #932600;">
+                                 <children>
+                                    <Text fill="#fffefe" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="#fffefe" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="#fffefe" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <Button id="3" mnemonicParsing="false" text="eat" />
+                                    <Button mnemonicParsing="false" text="sell" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="49.0" prefWidth="375.0" spacing="20.0" style="-fx-background-color: #932600;">
+                                 <children>
+                                    <Text fill="#fffefe" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="#fffefe" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="#fffefe" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <Button id="4" mnemonicParsing="false" text="eat" />
+                                    <Button mnemonicParsing="false" text="sell" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="49.0" prefWidth="375.0" spacing="20.0" style="-fx-background-color: #932600;">
+                                 <children>
+                                    <Text fill="#fffefe" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="#fffefe" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="#fffefe" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <Button id="5" mnemonicParsing="false" text="eat" />
+                                    <Button mnemonicParsing="false" text="sell" />
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="0.0" prefWidth="375.0" style="-fx-background-color: #932600;" />
+                              <HBox alignment="CENTER" prefHeight="49.0" prefWidth="375.0" spacing="20.0" style="-fx-background-color: #932600;">
+                                 <children>
+                                    <Text fill="#fffefe" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="#fffefe" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="#fffefe" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <Button id="5" mnemonicParsing="false" text="eat" />
+                                    <Button mnemonicParsing="false" text="sell" />
+                                 </children></HBox>
+                              <HBox alignment="CENTER" prefHeight="49.0" prefWidth="375.0" spacing="20.0" style="-fx-background-color: #932600;">
+                                 <children>
+                                    <Text fill="#fffefe" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="#fffefe" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="#fffefe" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <Button id="5" mnemonicParsing="false" text="eat" />
+                                    <Button mnemonicParsing="false" text="sell" />
+                                 </children></HBox>
+                              <HBox prefHeight="49.0" prefWidth="375.0" style="-fx-background-color: #932600;" />
+                              <HBox prefHeight="49.0" prefWidth="375.0" style="-fx-background-color: #932600;" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+         </children>
+      </Pane>
+      <Rectangle arcHeight="500.0" arcWidth="30.0" fill="#99623a" height="32.0" layoutX="424.0" layoutY="14.0" stroke="YELLOW" strokeType="INSIDE" width="121.0" />
+      <ImageView fx:id="coin" fitHeight="40.0" fitWidth="39.0" layoutX="415.0" layoutY="9.0">
+         <image>
+            <Image url="@images/money.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="money" fill="WHITE" layoutX="462.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="44.4609375">
+         <font>
+            <Font name="Tahoma Bold" size="14.0" />
+         </font>
+      </Text>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#99623a" height="25.0" layoutX="-6.0" layoutY="292.0" stroke="YELLOW" strokeType="INSIDE" width="113.0" />
+      <Text fill="WHITE" layoutX="23.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Location">
+         <font>
+            <Font name="Tahoma Bold" size="14.0" />
+         </font>
+      </Text>
+      <Button layoutX="514.0" layoutY="17.0" mnemonicParsing="false" onAction="#goToWorkplace" style="-fx-background-color: yellow;" text="+" />
+    </children>
+</AnchorPane>
