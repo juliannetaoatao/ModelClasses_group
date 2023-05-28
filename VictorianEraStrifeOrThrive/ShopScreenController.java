@@ -22,6 +22,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
@@ -69,9 +71,18 @@ public class ShopScreenController implements Initializable{
     
     
     @FXML public void buyItem(ActionEvent event){
-        int index = Integer.parseInt(((Button)event.getSource()).getId());
-        mc.buy(Items.getItemByIndex(index-1));
-        money.setText("S" + mc.getMoney());
+        int index = Integer.parseInt(((Button)event.getSource()).getId()) - 1;
+        if(mc.getMoney() > (Items.getItemByIndex(index)).getItemPrice()){
+            mc.buy(Items.getItemByIndex(index));
+            money.setText("S" + mc.getMoney());
+        }
+        else{
+            Alert alert =new Alert(AlertType.INFORMATION);
+            alert.setTitle("ALERT!");
+            alert.setContentText("Not enough money!");
+            
+            
+        }
     }
         @FXML public void goToWorkplace(ActionEvent event)throws IOException{
         try {
@@ -92,6 +103,8 @@ public class ShopScreenController implements Initializable{
             logger.log(Level.SEVERE, "error", e);
         }
     }
+        
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         money.setText("S" + mc.getMoney());
@@ -119,6 +132,10 @@ public class ShopScreenController implements Initializable{
         type06.setText((Items.getItemByIndex(5)).getItemType());
         type06.setText((Items.getItemByIndex(6)).getItemType());
         
+        
+    }    
+}
+   
         
         
         
