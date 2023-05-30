@@ -47,17 +47,16 @@ public class Player {
     public double getMoney(){
         return money;
     }
-    public static ArrayList<Items> getInventoryList(){
-        return inventoryList;
+    public void sleep(){
+        energyLevel += 8;
+        money -= 10;
     }
-    public int sleepEnergyAddition(int hour, int multiple){
-        int energyGain = hour * multiple;
-        return energyGain;
-    }
+    
     public void eat(Items i){
         energyLevel += i.getEnergyGain();
         hungerBar += i.getHungerGain();
         hydrationLevel += i.getHydrationGain();
+        (Items.getInventoryList()).remove(i);
     }
     
     public void doTask(Tasks task){
@@ -71,10 +70,10 @@ public class Player {
     
     public void buy(Items item){
         money -= item.getItemPrice();
-        inventoryList.add(item);
+        (Items.getInventoryList()).add(item);
     }
     public void sell(Items i){
         inventoryList.remove(i);
-        //money += i.itemPrice;
+        money += i.getItemPrice();
     }
 }
