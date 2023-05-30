@@ -31,6 +31,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import java.util.Set;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
@@ -42,7 +43,7 @@ import javafx.stage.FileChooser;
 public class WorkplaceScreenController implements Initializable {
     @FXML private Rectangle screenChanger;
     @FXML private ImageView coin;
-    @FXML private ProgressBar health, energy, hunger, hydration;
+    @FXML private Text health, energy, hunger, hydration;
     @FXML private Button task01, task02, task03, task04, task05, task06;
     @FXML private Label taskName01, taskName02, taskName03, taskName04, taskName05, taskName06;
     @FXML private Label hunger01, hunger02, hunger03, hunger04, hunger05, hunger06;
@@ -52,11 +53,28 @@ public class WorkplaceScreenController implements Initializable {
     @FXML private Label money;
     
     Player mc = Main.getMC();
+    double healthProg = mc.getHealth()/ 10;
     
     @FXML public void doTask(ActionEvent event) {
         int index = Integer.parseInt(((Button)event.getSource()).getId());
-        mc.doTask(Tasks.getTaskByIndex(index - 1));
-        money.setText("S" + mc.getMoney());
+        if(
+                mc.getEnergyLevel() >= (Tasks.getTaskByIndex(index)).getEnergyCost() &&
+                mc.getHungerBar() >= (Tasks.getTaskByIndex(index)).getHungerCost() &&
+                mc.getHydrationLevel() >= (Tasks.getTaskByIndex(index)).getHydrationCost()
+                ){
+            mc.doTask(Tasks.getTaskByIndex(index - 1));
+            money.setText("S" + mc.getMoney());
+            health.setText("" + mc.getHealth());
+            energy.setText("" + mc.getEnergyLevel());
+            hunger.setText("" + mc.getHungerBar());
+            hydration.setText("" + mc.getHydrationLevel());
+        }
+        else{
+            Alert alert =new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("ALERT!");
+            alert.setContentText("Cant do task!");
+            alert.showAndWait();
+        }
     }
     
     @FXML public void backToScreenMenu(MouseEvent event)throws IOException{
@@ -84,45 +102,46 @@ public class WorkplaceScreenController implements Initializable {
         
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        int maxTaskList = Tasks.getTaskList().size();
-        for (int i = 0; i < maxTaskList; i++){
-            hideButton(Tasks.getTaskByIndex(i));
-        }
+        health.setText("" + mc.getHealth());
+        energy.setText("" + mc.getEnergyLevel());
+        hunger.setText("" + mc.getHungerBar());
+        hydration.setText("" + mc.getHydrationLevel());
         money.setText("S" + mc.getMoney());
+        
         taskName01.setText((Tasks.getTaskByIndex(0)).getTaskName());
         energy01.setText("Energy Cost: " + (Tasks.getTaskByIndex(0)).getEnergyCost());
         hunger01.setText("Hunger Cost: " + (Tasks.getTaskByIndex(0)).getHungerCost());
-        exp01.setText("Experience: " + (Tasks.getTaskByIndex(0)).getExperienceRequirement());
+        exp01.setText("Hydration Cost: " + (Tasks.getTaskByIndex(0)).getHydrationCost());
         wage01.setText("Wage: " + (Tasks.getTaskByIndex(0)).getWage());
         
         taskName02.setText((Tasks.getTaskByIndex(1)).getTaskName());
         energy02.setText("Energy Cost: " + (Tasks.getTaskByIndex(1)).getEnergyCost());
         hunger02.setText("Hunger Cost: " + (Tasks.getTaskByIndex(1)).getHungerCost());
-        exp02.setText("Experience: " + (Tasks.getTaskByIndex(1)).getExperienceRequirement());
+        exp02.setText("Hydration Cost: " + (Tasks.getTaskByIndex(1)).getHydrationCost());
         wage02.setText("Wage: " + (Tasks.getTaskByIndex(1)).getWage());
         
         taskName03.setText((Tasks.getTaskByIndex(2)).getTaskName());
         energy03.setText("Energy Cost: " + (Tasks.getTaskByIndex(2)).getEnergyCost());
         hunger03.setText("Hunger Cost: " + (Tasks.getTaskByIndex(2)).getHungerCost());
-        exp03.setText("Experience: " + (Tasks.getTaskByIndex(2)).getExperienceRequirement());
+        exp03.setText("Hydration Cost: " + (Tasks.getTaskByIndex(2)).getHydrationCost());
         wage03.setText("Wage: " + (Tasks.getTaskByIndex(2)).getWage());
         
         taskName04.setText((Tasks.getTaskByIndex(3)).getTaskName());
         energy04.setText("Energy Cost: " + (Tasks.getTaskByIndex(3)).getEnergyCost());
         hunger04.setText("Hunger Cost: " + (Tasks.getTaskByIndex(3)).getHungerCost());
-        exp04.setText("Experience: " + (Tasks.getTaskByIndex(3)).getExperienceRequirement());
+        exp04.setText("Hydration Cost: " + (Tasks.getTaskByIndex(3)).getHydrationCost());
         wage04.setText("Wage: " + (Tasks.getTaskByIndex(3)).getWage());
         
         taskName05.setText((Tasks.getTaskByIndex(4)).getTaskName());
         energy05.setText("Energy Cost: " + (Tasks.getTaskByIndex(4)).getEnergyCost());
         hunger05.setText("Hunger Cost: " + (Tasks.getTaskByIndex(4)).getHungerCost());
-        exp05.setText("Experience: " + (Tasks.getTaskByIndex(4)).getExperienceRequirement());
+        exp05.setText("Hydration Cost: " + (Tasks.getTaskByIndex(4)).getHydrationCost());
         wage05.setText("Wage: " + (Tasks.getTaskByIndex(4)).getWage());
         
-        ("taskname0" + 6).setText((Tasks.getTaskByIndex(5)).getTaskName());
+        taskName06.setText((Tasks.getTaskByIndex(5)).getTaskName());
         energy06.setText("Energy Cost: " + (Tasks.getTaskByIndex(5)).getEnergyCost());
         hunger06.setText("Hunger Cost: " + (Tasks.getTaskByIndex(5)).getHungerCost());
-        exp06.setText("Experience: " + (Tasks.getTaskByIndex(5)).getExperienceRequirement());
+        exp06.setText("Hydration Cost: " + (Tasks.getTaskByIndex(5)).getHydrationCost());
         wage06.setText("Wage: " + (Tasks.getTaskByIndex(5)).getWage());
     } 
 }
